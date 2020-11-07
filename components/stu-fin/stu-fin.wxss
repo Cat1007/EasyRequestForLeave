@@ -1,0 +1,111 @@
+/* components/stu-fin/stu-fin.wxss */
+.wrapper {
+  position: relative;
+  margin: 20rpx;
+  padding: 10rpx 0;
+  padding-top: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04); 
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.itemHeader {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  padding: 10rpx 16px;
+}
+
+.reqType {
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+
+.status {
+  height: 40px;
+  line-height: 40px;
+}
+
+.reqTime {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 10rpx 16px;
+}
+
+.timeWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.timeHeader {
+  font-size: 12px;
+  color: #92959b;
+}
+
+.time {
+  font-size: 16px;
+  font-weight: 550;
+  color: #303133;
+}
+
+.totalTime {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.day {
+  font-size: 18px;
+  font-weight: 550;
+  padding: 0 5rpx;
+  color: #303133;
+}
+
+.word {
+  font-size: 14px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 20rpx 16px;
+}
+
+.fooBtn {
+  font-size: 16px;
+}
+
+.backBtn {
+  color: #67c23a;
+}
+
+.delBtn {
+  color: #f56c6c;
+}
+
+.backBtnt {
+  color: #e6a23c;
+}
+
+.van-tag {
+  margin: 5px;
+}
+
+.content {
+  width: 100%;
+  font-size: 14px;
+  word-break:break-all;
+}

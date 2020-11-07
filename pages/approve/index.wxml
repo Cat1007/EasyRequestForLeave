@@ -1,0 +1,37 @@
+<view class="greeting">
+	<view class="name">{{name}} 老师</view>
+	<view class="notice" wx:if="{{total=='0'}}">暂时没有学生向你提出请假</view>
+	<view class="notice" wx:if="{{total!='0'}}">您还有
+		<text style="color: #5a9df8;font-weight: bold;font-size: 18px;">{{list.length}}</text>
+		条请假请求待处理
+	</view>
+	<view class="refreshBtn" bindtap="loadRequestList">
+		<van-icon
+		 name="replay"
+		 size="25px"
+		 color="#ffffff"
+		/>
+	</view>
+</view>
+
+<tea-unfin
+ wx:for="{{list}}"
+ wx:for-item="req"
+ wx:key="index"
+ item="{{req}}"
+ data-reqId="{{req.reqId}}"
+ data-sectionId="{{req.sectionId}}"
+ bind:agree="agreeRequest"
+ bind:refuse="refuseRequest"
+></tea-unfin>
+
+<van-empty description="暂时没有需要处理的请假单" wx:if="{{list.length==0 && !loading}}" />
+
+<van-overlay show="{{loading}}">
+	<view class="loadWrapper">
+		<van-loading color="#409EFF" vertical>正在加载...</van-loading>
+	</view>
+</van-overlay>
+
+<view style="width: 100%;height: 48px;"></view>
+

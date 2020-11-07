@@ -1,0 +1,61 @@
+<!--components/stu-fin/stu-fin.wxml-->
+<view class="wrapper">
+	<view class="itemHeader" style="background-color: {{item.processType=='1'?'#67C23A':'#f56c6c'}};">
+		<view class="reqType">{{item.reqType==1?"病假":"事假"}}</view>
+		<view
+		 class="status"
+		 wx:if="{{item.processType== 1}}"
+		 style="color:#f0f9eb;"
+		>已批准
+		</view>
+		<view
+		 class="status"
+		 wx:if="{{item.processType== 2}}"
+		 style="color:#fdf6ec;"
+		>驳回
+		</view>
+	</view>
+	<view class="reqTime">
+		<view class="timeWrapper">
+			<view class="timeHeader">开始时间</view>
+			<view class="time">{{item.startDate}}</view>
+		</view>
+		<view class="timeWrapper">
+			<view class="timeHeader">结束时间</view>
+			<view class="time">{{item.endDate}}</view>
+		</view>
+		<view class="totalTime">
+			<view class="word">共</view>
+			<view class="day">{{item.total}}</view>
+			<view class="word">天</view>
+		</view>
+	</view>
+	<van-collapse
+	 value="{{ activeNames }}"
+	 bind:change="collChange"
+	 accordion
+	 border=""
+	>
+		<!-- <van-collapse-item title="请假缘由" name="1">
+      <view class="content">{{item.content}}</view>
+    </van-collapse-item> -->
+		<van-collapse-item title="共有 {{item.classList.length}} 节相关课程" name="2">
+			<van-tag
+			 wx:for="{{ item.classList }}"
+			 wx:for-item="class"
+			 wx:key='index'
+			 color="{{class.status==1?'#67C23A':(class.status==2?'#F56C6C':'#909399')}}"
+			 size="large"
+			 round
+			 bindtap='tap'
+			 data-content='{{class.reply}}'
+			 data-status='{{class.status}}'
+			>{{class.name}}
+			</van-tag>
+		</van-collapse-item>
+	</van-collapse>
+	<view class="footer">
+		<view class="fooBtn delBtn" bindtap="delete">删除</view>
+	</view>
+</view>
+

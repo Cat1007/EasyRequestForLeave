@@ -1,0 +1,5 @@
+<van-cell-group title="个人信息">
+	<van-cell title="姓名" value="{{name}}" />
+	<van-cell title="学号/工号" value="{{id}}" />
+</van-cell-group>
+

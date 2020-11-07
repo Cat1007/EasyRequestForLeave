@@ -1,0 +1,84 @@
+.itemTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 16px;
+    color: #409EFF;
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 100;
+    background-color: #ffffff;
+  }
+  
+  .Title {
+    margin: 20rpx;
+    color: #66b1ff;
+    font-size: 18px;
+  }
+  
+  .itemBtn {
+    color: #969799;
+  }
+  
+  .wrapper {
+    position: relative;
+    margin: 20rpx;
+    padding: 10rpx;
+    padding-top: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04); 
+    overflow: hidden;
+    z-index: 1;
+    background-color: #fff;
+  }
+  
+  .loadingWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx;
+    justify-content: center;
+  }
+  
+  .uploadWrapper {
+    padding: 8px 16px;
+  }
+  
+  .btnW {
+    margin: 20rpx;
+  }
+  
+  .van-button--round {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  }
+  
+  .typeSelect {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .typeRadio {
+    margin-right: 40rpx;
+  }
+  
+  .record {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .recordBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: #409eff;
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  page {
+    background-color: #f0f3f6;
+  }

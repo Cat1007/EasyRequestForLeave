@@ -1,0 +1,27 @@
+{
+  "navigationBarTitleText": "",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "disableScroll": false,
+  "usingComponents": {
+    "van-panel": "@vant/weapp/panel",
+    "van-collapse": "@vant/weapp/collapse",
+    "van-collapse-item": "@vant/weapp/collapse-item",
+    "van-tab": "@vant/weapp/tab",
+    "van-tabs": "@vant/weapp/tabs",
+    "van-steps": "@vant/weapp/steps",
+    "van-button": "@vant/weapp/button",
+    "van-tag": "@vant/weapp/tag",
+    "van-divider": "@vant/weapp/divider",
+    "van-dialog": "@vant/weapp/dialog",
+    "van-overlay": "@vant/weapp/overlay",
+    "van-loading": "@vant/weapp/loading",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-transition": "@vant/weapp/transition/index",
+
+    "stu-unfin": "/components/stu-unfin/stu-unfin",
+    "stu-fin": "/components/stu-fin/stu-fin"
+  }
+}

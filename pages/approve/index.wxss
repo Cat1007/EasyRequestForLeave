@@ -1,0 +1,38 @@
+.greeting {
+    margin: 20px 30rpx;
+    position: relative;
+  }
+  
+  .name {
+    font-size: 20px;
+  }
+  
+  .notice {
+    margin-top: 5px; 
+    font-size: 14px;
+  }
+
+  .loadWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  page {
+    background-color: #f1f3f6;
+  }
+
+  .refreshBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: #409eff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04); 
+  }

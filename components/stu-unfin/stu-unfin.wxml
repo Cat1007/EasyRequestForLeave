@@ -1,0 +1,65 @@
+<!--components/stu-unfin.wxml-->
+<view class="wrapper">
+	<view class="itemHeader">
+		<view class="reqType">{{item.reqType=="1"?"病假":"事假"}}</view>
+		<view class="status">等待审核</view>
+	</view>
+	<view class="reqTime">
+		<view class="timeWrapper">
+			<view class="timeHeader">开始时间</view>
+			<view class="time">{{item.startDate}}</view>
+		</view>
+		<view class="timeWrapper">
+			<view class="timeHeader">结束时间</view>
+			<view class="time">{{item.endDate}}</view>
+		</view>
+		<view class="totalTime">
+			<view class="word">共</view>
+			<view class="day">{{item.total}}</view>
+			<view class="word">天</view>
+		</view>
+	</view>
+	<van-collapse
+	 value="{{ activeNames }}"
+	 bind:change="collChange"
+	 accordion
+	 border=""
+	>
+		<van-collapse-item title="请假缘由" name="1">
+			<view class="content">{{item.content}}</view>
+		</van-collapse-item>
+		<van-collapse-item title="共有 {{item.classList.length}} 节相关课次" name="2">
+			<van-tag
+			 wx:for="{{ item.classList }}"
+			 wx:for-item="class"
+			 wx:key='index'
+			 wx:if="{{class.status==2}}"
+			 color="#F56C6C"
+			 size="large"
+			 round
+			>{{class.name}}
+			</van-tag>
+			<van-tag
+			 wx:for="{{ item.classList }}"
+			 wx:for-item="class"
+			 wx:key='index'
+			 wx:if="{{class.status==1}}"
+			 color="#67c23a"
+			 size="large"
+			 round
+			>{{class.name}}
+			</van-tag>
+			<van-tag
+			 wx:for="{{ item.classList }}"
+			 wx:for-item="class"
+			 wx:key='index'
+			 wx:if="{{class.status==3}}"
+			 color="#909399"
+			 size="large"
+			 round
+			>{{class.name}}
+			</van-tag>
+		</van-collapse-item>
+	</van-collapse>
+</view>
+

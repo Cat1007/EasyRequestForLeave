@@ -1,0 +1,15 @@
+<van-tabbar
+ active="{{ active }}"
+ bind:change="changeTab"
+ wx:if="{{show}}"
+>
+	<van-tabbar-item
+	 icon="{{item.icon}}"
+	 wx:for="{{list}}"
+	 data-path="{{item.pagePath}}"
+	 wx:key="index"
+	 name="{{item.name}}"
+	>{{item.text}}
+	</van-tabbar-item>
+</van-tabbar>
+

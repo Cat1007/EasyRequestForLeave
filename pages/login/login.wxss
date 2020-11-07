@@ -1,0 +1,27 @@
+/* pages/login/login.wxss */
+.tips {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%;
+    padding: 16rpx;
+}
+
+page {
+    height: 100%;
+}
+
+.loadingWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

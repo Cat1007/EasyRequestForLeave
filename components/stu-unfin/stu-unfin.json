@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-panel": "@vant/weapp/panel",
+    "van-collapse": "@vant/weapp/collapse",
+    "van-collapse-item": "@vant/weapp/collapse-item",
+    "van-tab": "@vant/weapp/tab",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tabs": "@vant/weapp/tabs",
+    "van-steps": "@vant/weapp/steps",
+    "van-button": "@vant/weapp/button",
+    "van-tag": "@vant/weapp/tag"
+  }
+}

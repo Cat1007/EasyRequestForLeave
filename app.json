@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/me/index",
+    "pages/request/index",
+    "pages/list/index",
+    "pages/approve/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#409eff",
+    "navigationBarTitleText": "请不到的假",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/request/index",
+        "text": "请假"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "text": "请假单列表"
+      },
+      {
+        "pagePath": "pages/approve/index",
+        "text": "审批"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

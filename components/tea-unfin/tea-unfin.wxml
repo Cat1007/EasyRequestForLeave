@@ -1,0 +1,41 @@
+<!--components/tea-unfin/tea-unfin.wxml-->
+<view class="wrapper">
+	<view class="itemHeader">
+		<view class="stuWrapper">
+			<view class="studentInf">
+				<view class="name">{{item.stuName}}</view>
+				<view class="stuId">{{item.stuId}}</view>
+			</view>
+		</view>
+		<view class="reqType">{{item.reqType==1?'病假':'事假'}}</view>
+	</view>
+	<van-cell-group border="{{false}}">
+		<van-cell title="课程名称" value="{{item.courseName}}" />
+		<van-cell title="上课时间" value="{{item.sectionTime}}" />
+	</van-cell-group>
+	<van-collapse
+	 value="{{ activeName }}"
+	 bind:change="onChange"
+	 accordion
+	 border=""
+	>
+		<van-collapse-item title="学生请假缘由" name="1">
+			<view class="content">{{item.content}}</view>
+		</van-collapse-item>
+	</van-collapse>
+	<view class="footer">
+		<view
+		 class="fooBtn"
+		 style="color: #F56C6C;"
+		 bindtap="refuse"
+		>拒绝
+		</view>
+		<view
+		 class="fooBtn"
+		 style="color: #67C23A;"
+		 bindtap="agree"
+		>同意
+		</view>
+	</view>
+</view>
+

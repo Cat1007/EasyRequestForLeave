@@ -1,0 +1,47 @@
+<van-tabs
+ active="{{tabActive}}"
+ bind:change="tabsChange"
+ color="#409EFF"
+ border=""
+ sticky
+ swipeable
+ bind:click="tabClick"
+>
+	<van-tab title="未审核完毕" info="{{unfinishedList.length == 0? '': unfinishedList.length}}">
+		<van-transition
+		 show="{{ show }}"
+		 name="fade-left"
+		 wx:for="{{unfinishedList}}"
+		 wx:for-item="ii"
+		 wx:key='index'
+		 duration="{{400+index*80}}"
+		>
+			<stu-unfin item="{{ii}}"></stu-unfin>
+		</van-transition>
+		<van-divider contentPosition="center" wx:if="{{show}}">到底啦</van-divider>
+	</van-tab>
+	<van-tab title="审核完毕">
+		<van-transition
+		 show="{{ show }}"
+		 name="fade-right"
+		 wx:for="{{finishedList}}"
+		 wx:for-item="ii"
+		 wx:key='index'
+		 duration="{{400+index*80}}"
+		>
+			<stu-fin
+			 item="{{ii}}"
+			 bindcomeback="comeback"
+			 binddelete="delete"
+			></stu-fin>
+		</van-transition>
+		<van-divider contentPosition="center" wx:if="{{show}}">到底啦</van-divider>
+	</van-tab>
+</van-tabs>
+<van-dialog id="van-dialog" />
+<van-overlay show="{{loading}}">
+	<view class="loadWrapper">
+		<van-loading color="#409EFF" vertical>正在加载请假单列表</van-loading>
+	</view>
+</van-overlay>
+<view style="width: 100%;height: 48px;"></view>
