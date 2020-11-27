@@ -10,7 +10,8 @@ App({
       success(res) {
         let loginInfo = res.data
         that.globalData.userInfo = res.data
-        if (loginInfo.user.type == 'student') {
+        console.log(loginInfo)
+        if (loginInfo.type == 'student') {
           that.globalData.tabbarList = Student
           // 配置tabbar 跳转
           wx.switchTab({

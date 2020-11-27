@@ -30,15 +30,15 @@
 			<view class="word">天</view>
 		</view>
 	</view>
-	<van-collapse
+	<!-- <van-collapse
 	 value="{{ activeNames }}"
 	 bind:change="collChange"
 	 accordion
 	 border=""
 	>
-		<!-- <van-collapse-item title="请假缘由" name="1">
+		<van-collapse-item title="请假缘由" name="1">
       <view class="content">{{item.content}}</view>
-    </van-collapse-item> -->
+    </van-collapse-item>
 		<van-collapse-item title="共有 {{item.classList.length}} 节相关课程" name="2">
 			<van-tag
 			 wx:for="{{ item.classList }}"
@@ -53,7 +53,7 @@
 			>{{class.name}}
 			</van-tag>
 		</van-collapse-item>
-	</van-collapse>
+	</van-collapse> -->
 	<view class="footer">
 		<view class="fooBtn delBtn" bindtap="delete">删除</view>
 	</view>

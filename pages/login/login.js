@@ -1,6 +1,9 @@
 // pages/login/login.js
 import serve from '../../utils/serveAPI';
-import {Teacher,Student} from '../../utils/tabbar'
+import {
+  Teacher,
+  Student
+} from '../../utils/tabbar'
 
 const app = getApp()
 
@@ -10,8 +13,11 @@ Page({
    */
   data: {
     isLogin: false,
+    // 当前页面暂存用户信息
     userInfo: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    userType: 'student',
+    userId: ''
   },
 
   login: function () {
@@ -23,7 +29,7 @@ Page({
           // 携带code去后台验证
           wx.request({
             url: serve.domain + '/login',
-            method: 'POST',
+            method: 'GET',
             data: {
               code: loginRes.code
             },
@@ -38,7 +44,9 @@ Page({
                 // 保存登陆状态和信息到本地
                 try {
                   wx.setStorageSync('loginInfo', userInfo)
-                } catch (e) { console.log(e) }
+                } catch (e) {
+                  console.log(e)
+                }
                 app.globalData.userInfo = userInfo
                 // 提示重新打开小程序
                 that.setData({
@@ -47,6 +55,7 @@ Page({
               } else {
                 // 跳转到认证页
                 that.setData({
+                  userInfo: userInfo,
                   isLogin: true
                 })
               }
@@ -59,11 +68,57 @@ Page({
     })
   },
 
+  // 认证用户身份
+  authenticate() {
+    var that = this
+    let typeId = parseInt(this.data.userId)
+    let reqData = {
+      openId: that.data.userInfo.user.openId,
+      id: typeId,
+      identify: that.data.userType
+    }
+    console.log(reqData)
+    wx.request({
+      url: serve.domain + '/auth',
+      method: 'POST',
+      data: reqData,
+      success: (res) => {
+        console.log(res)
+        if (res.data.user != null) {
+          let userInfo = {
+            isAuthenticated: true,
+            type: res.data.type,
+            user: res.data.user
+          }
+          // 保存登陆状态和信息到本地
+          try {
+            wx.setStorageSync('loginInfo', userInfo)
+          } catch (e) {
+            console.log(e)
+          }
+          // 提示重新打开小程序
+          that.setData({
+            isAuthenticated: true,
+            isLogin: false
+          })
+        } else {
+          console.log("auth failed")
+        }
+      }
+    })
+  },
+
+  onUserTypeChange(event) {
+    this.setData({
+      userType: event.detail,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

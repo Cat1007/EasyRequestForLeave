@@ -25,3 +25,15 @@ page {
     align-items: center;
     height: 100%;
 }
+
+.radiosWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 16px;
+}
+
+.radioWrapper {
+    margin-right: 10px;
+}

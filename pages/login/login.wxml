@@ -1,11 +1,24 @@
 <!--pages/login/login.wxml-->
 <view class="contentWrapper" wx:if="{{isLogin}}">
 	<text class="tips">您尚未认证学生或老师身份</text>
-	<van-field placeholder="请输入学号/工号" />
+	<view>
+		<van-field placeholder="请输入学号/工号" model:value="{{ userId }}"/>
+		<van-radio-group value="{{ userType }}" bind:change="onUserTypeChange">
+			<view class="radiosWrapper">
+				<view class="radioWrapper">
+					<van-radio name="student">学生</van-radio>
+				</view>
+				<view class="radioWrapper">
+					<van-radio name="teacher">教师</van-radio>
+				</view>
+			</view>
+		</van-radio-group>
+	</view>
 	<van-button
 	 type="default"
 	 block
 	 color="#1a89fa"
+	 bind:click="authenticate"
 	>认证
 	</van-button>
 </view>

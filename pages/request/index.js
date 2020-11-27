@@ -46,7 +46,7 @@ const pageOptions = {
     picList: []
   },
 
-  datainit: function() {
+  datainit: function () {
     this.setData({
       //时间选择判断变量
       timeSelected: false,
@@ -185,14 +185,18 @@ const pageOptions = {
       end = this.dateToString(this.data.singleDate)
     }
 
+    let reqData = {
+      startTime: start,
+      endTime: end,
+      //添加用户的id
+      userId: app.globalData.userInfo.user.id
+    }
+
+    console.log(reqData)
+
     wx.request({
       url: serveApi.domain + '/loadSection',
-      data: {
-        startTime: start,
-        endTime: end,
-        //添加用户的id
-        userId: '20183625'
-      },
+      data: reqData,
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -323,7 +327,7 @@ const pageOptions = {
     wx.setStorage({
       key: 'tempReq',
       data: tempReq,
-      success: function(res) {
+      success: function (res) {
         console.log(res)
         //成功提示
         Notify({
@@ -338,7 +342,7 @@ const pageOptions = {
           saveLoading: false
         })
       },
-      fail: function(req) {
+      fail: function (req) {
         Notify({
           type: 'primary',
           message: '保存失败',
@@ -353,7 +357,6 @@ const pageOptions = {
   // 提交请假单
   submit() {
     var that = this
-
     this.setData({
       submitLoading: true
     })
@@ -423,65 +426,62 @@ const pageOptions = {
     //异步提交
     var req = new Object()
 
+    var that = this
+    that.setData({
+      submitLoading: true
+    })
+
     if (that.data.continueSelect == true) {
-      req.start = that.dateToString(that.data.startDate)
-      req.end = that.dateToString(that.data.endDate)
+      req.startTime = that.dateToString(that.data.startDate)
+      req.endTime = that.dateToString(that.data.endDate)
     } else {
-      req.start = that.dateToString(that.data.singleDate)
-      req.end = that.dateToString(that.data.singleDate)
+      req.startTime = that.dateToString(that.data.singleDate)
+      req.endTime = that.dateToString(that.data.singleDate)
     }
 
     req.selectedList = that.data.selectedCourse
-    req.reqType = that.data.reqType
+    req.type = parseInt(that.data.reqType)
     req.content = that.data.content
-
+    req.studentId = app.globalData.userInfo.user.id
     console.log(req)
 
     // web提交请假单
-    // wx.request({
-    //   url: '',
-    //   data: req,
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success(res) {
-    //     console.log(res)
-    //     that.datainit()
-    //     that.setData({
-    //       submitLoading: false
-    //     })
-
-    //     wx.removeStorageSync('tempReq')
-    //     //成功提示
-    //     Notify({
-    //       type: 'primary',
-    //       message: '提交成功',
-    //       duration: 1000,
-    //       color: '#ffffff',
-    //       background: '#67C23A'
-    //     })
-    //   },
-    //   fail(res) {
-    //     that.setData({
-    //       submitLoading: false
-    //     })
-    //     Notify({
-    //       type: 'primary',
-    //       message: '提交失败',
-    //       duration: 1000,
-    //       color: '#ffffff',
-    //       background: '#E6A23C'
-    //     })
-    //   }
-    // })
-
-    this.setData({
-      submitLoading: false
+    wx.request({
+      url: serveApi.domain + '/student/note',
+      data: req,
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res)
+        that.datainit()
+        that.setData({
+          submitLoading: false
+        })
+        wx.removeStorageSync('tempReq')
+        //成功提示
+        Notify({
+          type: 'primary',
+          message: '提交成功',
+          duration: 1000,
+          color: '#ffffff',
+          background: '#67C23A'
+        })
+      },
+      fail(res) {
+        that.setData({
+          submitLoading: false
+        })
+        Notify({
+          type: 'primary',
+          message: '提交失败',
+          duration: 1000,
+          color: '#ffffff',
+          background: '#E6A23C'
+        })
+      }
     })
-    wx.removeStorageSync('tempReq')
-    that.datainit()
-
   },
 
   // 页面载入时
@@ -496,7 +496,7 @@ const pageOptions = {
         active: 'request'
       })
     }
-   },
+  },
   // 页面显示时
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -511,7 +511,7 @@ const pageOptions = {
     //加载缓存中的请假单数据
     wx.getStorage({
       key: 'tempReq',
-      success: function(res) {
+      success: function (res) {
         var t1, t2, t3
         t1 = new Date(res.data.startDate)
         t2 = new Date(res.data.endDate)
@@ -548,7 +548,7 @@ const pageOptions = {
         })
 
       },
-      fail: function(res) {
+      fail: function (res) {
         that.setData({
           loading: false
         })

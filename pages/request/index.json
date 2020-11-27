@@ -7,7 +7,7 @@
     "van-button": "@vant/weapp/button",
     "van-cell": "@vant/weapp/cell",
     "van-cell-group": "@vant/weapp/cell-group",
-    "van-calendar": "/@vant/weapp/calendar",
+    "van-calendar": "@vant/weapp/calendar",
     "van-switch": "@vant/weapp/switch",
     "van-transition": "@vant/weapp/transition",
     "van-field": "@vant/weapp/field",

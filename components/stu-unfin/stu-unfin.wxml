@@ -28,7 +28,7 @@
 		<van-collapse-item title="请假缘由" name="1">
 			<view class="content">{{item.content}}</view>
 		</van-collapse-item>
-		<van-collapse-item title="共有 {{item.classList.length}} 节相关课次" name="2">
+		<!-- <van-collapse-item title="共有 {{item.classList.length}} 节相关课次" name="2">
 			<van-tag
 			 wx:for="{{ item.classList }}"
 			 wx:for-item="class"
@@ -59,7 +59,7 @@
 			 round
 			>{{class.name}}
 			</van-tag>
-		</van-collapse-item>
+		</van-collapse-item> -->
 	</van-collapse>
 </view>
 

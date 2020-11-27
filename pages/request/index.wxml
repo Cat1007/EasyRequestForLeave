@@ -133,12 +133,6 @@
 				 checked-color="#409EFF"
 				>事假
 				</van-radio>
-				<van-radio
-				 name="3"
-				 class="typeRadio"
-				 checked-color="#409EFF"
-				>公假
-				</van-radio>
 			</van-radio-group>
 		</van-cell>
 		<van-field

@@ -22,10 +22,10 @@ const pageOptions = {
     })
 
     wx.request({
-      url: serveApi.domain + '/loadUnfinishedRequest',
+      url: serveApi.domain + '/student/note/loadUnfinishedRequest',
       data: {
         //添加用户的id以及身份信息
-        userId: '20183625'
+        id: app.globalData.userInfo.user.id
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -65,15 +65,16 @@ const pageOptions = {
       show: false
     })
     wx.request({
-      url: serveApi.domain + '/loadFinishedRequest',
+      url: serveApi.domain + '/student/note/loadFinishedRequest',
       data: {
         //添加用户的id
-        userId: '20183625'
+        id: app.globalData.userInfo.user.id
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
+        console.log(res.data.finishedList)
         that.setData({
           finishedList: res.data.finishedList
         })

@@ -17,13 +17,20 @@ const pageOptions = {
       loading: true
     })
     wx.request({
-      url: serveApi.domain + '/loadRequestListForTeacher',
+      url: serveApi.domain + '/teacher/note/loadRequestListForTeacher',
+      data: {
+        id: app.globalData.userInfo.user.id
+      },
       success: (res) => {
         console.log(res.data)
         that.setData({
-          loading: false,
           list: res.data.list
         })
+        setTimeout(function(){
+          that.setData({
+            loading: false
+          })
+        },300)
       },
       fail() {
         that.setData({
@@ -48,11 +55,20 @@ const pageOptions = {
     // 标识一个请求的某个课次
     console.log(data.reqid)
     console.log(data.sectionid)
-    setTimeout(() => {
-      that.setData({
-        loading: false
-      })
-    }, 1000);
+    wx.request({
+      url: serveApi.domain + '/teacher/note/verifyRequest',
+      data: {
+        noteId: data.reqid,
+        sectionId: data.sectionid,
+        id: app.globalData.userInfo.user.id,
+        opinion: 'refuse'
+      },
+      success(res) {
+        if(res.data.isReviewSuccess) {
+          that.loadRequestList()
+        }
+      }
+    })
   },
 
   // 同意请假请求
@@ -65,11 +81,20 @@ const pageOptions = {
     // 标识一个请求的某个课次
     console.log(data.reqid)
     console.log(data.sectionid)
-    setTimeout(() => {
-      that.setData({
-        loading: false
-      })
-    }, 1000);
+    wx.request({
+      url: serveApi.domain + '/teacher/note/verifyRequest',
+      data: {
+        noteId: data.reqid,
+        sectionId: data.sectionid,
+        id: app.globalData.userInfo.user.id,
+        opinion: 'agree'
+      },
+      success(res) {
+        if(res.data.isReviewSuccess) {
+          that.loadRequestList()
+        }
+      }
+    })
   },
 
   // 页面载入时
