@@ -1,3 +1,3 @@
 export default {
-    domain: "http://122.9.111.61:8080/studentls"
+    domain: "http://112.74.95.237:8080/studentls"
 }
